@@ -4,6 +4,7 @@ import com.lautadev.practica_spring_security.model.Role;
 import com.lautadev.practica_spring_security.service.IRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/role")
+@PreAuthorize("hasRole('ADMIN')")
 public class RoleController {
     @Autowired
     private IRoleService roleService;

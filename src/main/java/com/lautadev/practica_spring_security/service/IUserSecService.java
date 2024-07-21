@@ -11,4 +11,5 @@ public interface IUserSecService {
     public Optional<UserSec> findUser(Long id);
     public void deleteUser(Long id);
     public void editUser(UserSec userSec);
+    String encriptPassword(String password);
 }

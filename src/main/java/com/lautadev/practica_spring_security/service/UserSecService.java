@@ -4,6 +4,7 @@ import com.lautadev.practica_spring_security.model.Role;
 import com.lautadev.practica_spring_security.model.UserSec;
 import com.lautadev.practica_spring_security.repository.IUserSecRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -22,6 +23,8 @@ public class UserSecService implements IUserSecService{
     @Override
     public void saveUser(UserSec userSec) {
         Set<Role> roleList = new HashSet<>();
+
+        userSec.setPassword(this.encriptPassword(userSec.getPassword()));
 
         for(Role role: userSec.getRoleList()){
             Role readRole = roleService.findRole(role.getId()).orElse(null);
@@ -54,5 +57,10 @@ public class UserSecService implements IUserSecService{
     @Override
     public void editUser(UserSec userSec) {
         this.saveUser(userSec);
+    }
+
+    @Override
+    public String encriptPassword(String password) {
+        return new BCryptPasswordEncoder().encode(password);
     }
 }
