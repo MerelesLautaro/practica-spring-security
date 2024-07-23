@@ -7,7 +7,6 @@ import com.lautadev.practica_spring_security.model.UserSec;
 import com.lautadev.practica_spring_security.repository.IUserSecRepository;
 import com.lautadev.practica_spring_security.utils.JWTUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;

@@ -5,13 +5,12 @@ import com.lautadev.practica_spring_security.model.Role;
 import com.lautadev.practica_spring_security.repository.IRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service
+@Transactional
 public class RoleService implements IRoleService{
     @Autowired
     private IRoleRepository roleRepository;
@@ -52,5 +51,19 @@ public class RoleService implements IRoleService{
     @Override
     public void editRole(Role role) {
         this.saveRole(role);
+    }
+
+    @Override
+    public Set<Role> findRoleByName(String nameRole) {
+        List<Role> allRoles = this.getRoles();
+        Set<Role> containRole = new HashSet<>();
+
+        for(Role role: allRoles){
+            if(Objects.equals(role.getRole(), nameRole)){
+                containRole.add(role);
+            }
+        }
+
+        return containRole;
     }
 }

@@ -1,5 +1,6 @@
 package com.lautadev.practica_spring_security.service;
 
+import com.lautadev.practica_spring_security.model.GoogleUserInfo;
 import com.lautadev.practica_spring_security.model.UserSec;
 
 import java.util.List;
@@ -11,5 +12,6 @@ public interface IUserSecService {
     public Optional<UserSec> findUser(Long id);
     public void deleteUser(Long id);
     public void editUser(UserSec userSec);
+    public UserSec saveUserOAuth(GoogleUserInfo googleUserInfo);
     String encriptPassword(String password);
 }
