@@ -52,7 +52,7 @@ public class IUserDetailsService implements UserDetailsService {
         userSec.getRoleList().stream()
                 .flatMap(role -> role.getPermissionsList().stream())
                 .forEach(permission -> authorityList.add(new SimpleGrantedAuthority(permission.getPermission())));
-
+        
         return new User(
                 userSec.getUsername(),
                 userSec.getPassword(),
